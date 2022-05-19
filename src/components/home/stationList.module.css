@@ -1,0 +1,17 @@
+.list__item_container{
+    background-color: #2F2F3A;
+    color: #A4AEC0;
+    cursor: pointer;
+}
+
+.list__item_sub_container{
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1.5rem;
+}
+
+.list__item_container p{
+    font-size: 1.4rem;
+}
