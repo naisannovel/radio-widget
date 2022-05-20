@@ -1,46 +1,36 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
 import SectionTitle from '../shared/SectionTitle';
 import style from "./manageStation.module.css";
+import { IoCreateOutline, IoTrashSharp } from "react-icons/io5";
 
 const ManageStation = () => {
+
     return (
-        <div>
+        <section>
             <SectionTitle title="Manage Station" />
 
             {/* Station List */}
 
-            <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan={2}>Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</Table>
-
-        </div>
+            <div className={style.station__list__container}>
+                <div className={style.row__container}>
+                  <p>#</p>
+                  <p>Station Name</p>
+                  <p>Frequency</p>
+                  <p>Action</p>
+                </div>
+                {/*  */}
+                <div className={style.row__container}>
+                  <p>1</p>
+                  <p> <input type="text" /> </p>
+                  <p> <input type="number" /> </p>
+                  <p className={style.manage__icon_container}>
+                      <IoCreateOutline/>
+                      <IoTrashSharp/>
+                  </p>
+                </div>
+                {/*  */}
+            </div>
+        </section>
     );
 };
 

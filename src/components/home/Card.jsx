@@ -1,27 +1,29 @@
 import React, { Fragment, useState } from 'react';
-import style from './hero.module.css';
+import style from './card.module.css';
 
 import { station } from '../../station';
 import StationList from './StationList';
 
-const Hero = () => {
+import SelectedStationItem from './SelectedStationItem';
+
+const Card = () => {
 
     const [selectedStation,setSelectedStation] = useState(null);
 
     const stationItem = station.map(item => {
-        if(selectedStation === item.id){
-            return <h1 key={item.id} onClick={()=> setSelectedStation(null)}>Hello world</h1>
+        if(selectedStation?.id === item.id){
+            return <SelectedStationItem key={item.id} data={selectedStation} setSelectedStation={setSelectedStation} />
         }
-
+        
         return <StationList data={item} key={item.id} setSelectedStation={setSelectedStation} />
     })
 
     return (
-        <section className={style.hero__container}>
+        <section className={style.card__container}>
 
             {/* station title */}
-            <div className={style.hero__title_container}>
-                <div className={style.hero__title_sub_container}>
+            <div className={style.card__title_container}>
+                <div className={style.card__title_sub_container}>
                     <img src="/asserts/icon/back-arrow.png" alt="Back Arrow"/>
                     <h2>Stations</h2>
                     <img src="/asserts/icon/switch.png" alt="switch"/>
@@ -32,12 +34,15 @@ const Hero = () => {
             { stationItem }
 
             {/* active station UI */}
-            <div className={style.active__station_container}>
-                <p>Currently Playing</p>
-                <p>Dribble FM</p>
-            </div>
+            {
+                selectedStation &&
+                <div className={style.active__station_container}>
+                    <p>Currently Playing</p>
+                    <p>{selectedStation?.name}</p>
+                </div>
+            }
         </section>
     );
 };
 
-export default Hero;
+export default Card;

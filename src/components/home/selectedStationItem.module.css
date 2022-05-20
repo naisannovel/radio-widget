@@ -1,0 +1,20 @@
+.selected__station__item_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    margin: 0 1.5rem;
+}
+
+.selected__station__item_container img:first-child{
+    width: 2rem;
+}
+.selected__station__item_container img:nth-child(2){
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: fill;
+}
+.selected__station__item_container img:last-child{
+    width: 2rem;
+}

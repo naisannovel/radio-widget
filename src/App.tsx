@@ -1,12 +1,12 @@
 import React from 'react';
 import Dashboard from './components/dashboard/Dashboard';
-import Hero from './components/home/Hero';
+import Card from './components/home/Card';
 
 function App() {
   return (
     <div>
-      {/* <Hero/> */}
-      <Dashboard/>
+      <Card/>
+      {/* <Dashboard/> */}
     </div>
   );
 }
