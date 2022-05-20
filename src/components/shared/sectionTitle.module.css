@@ -1,0 +1,11 @@
+.sectionTitle__container{
+    margin-top: 1rem;
+}
+
+.sectionTitle__container h2{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2F2F3A;
+    text-align: center;
+    margin-bottom: .2rem;
+}

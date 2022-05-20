@@ -1,5 +1,8 @@
 .nav__full_container{
     background-color: #2F2F3A;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .nav__container{
