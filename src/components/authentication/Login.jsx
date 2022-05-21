@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Input from '../shared/Input';
 import SectionTitle from '../shared/SectionTitle';
 import style from './auth.module.css';
+import { Link } from 'react-router-dom';
 
 // icons
 import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io5";
@@ -23,7 +24,7 @@ const Login = () => {
                 <button><IoLogoGoogle/> Login With Google</button>
                 <button><IoLogoFacebook/> Login With Facebook</button>
             </div>
-            <span className={style.auth__any__account}>Do not have any account? <a href="#">Sign Up</a></span>
+            <span className={style.auth__any__account}>Do not have any account? <Link to="/signup">Sign Up</Link></span>
         </Fragment>
     );
 };

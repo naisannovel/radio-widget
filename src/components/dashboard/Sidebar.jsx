@@ -1,19 +1,20 @@
 import React from 'react';
 import style from './sidebar.module.css'
 import { IoCreateOutline, IoListSharp } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     return (
         <section className={style.sidebar__container}>
             <div className={style.sidebar__nav_container}>
-                <a href="#">
+                <Link to="create-station">
                     <IoCreateOutline/>
                     <span>Create Station</span>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="manage-station">
                     <IoListSharp/>
                     <span>Manage Station</span>
-                </a>
+                </Link>
             </div>
         </section>
     );
