@@ -6,7 +6,7 @@
    margin-top: 2.5rem;
 }
 
-.auth__social__icon_container{
+.auth__social__btn_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
     margin-top: 1rem;
 }
 
-.auth__social__icon_container button{
+.auth__social__btn_container button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,11 +24,11 @@
     cursor: pointer;
 }
 
-.auth__social__icon_container button:last-child{
+.auth__social__btn_container button:last-child{
     margin-top: .5rem;
 }
 
-.auth__social__icon_container svg{
+.auth__social__btn_container svg{
     font-size: 1.2rem;
     margin-right: .3rem;
 }

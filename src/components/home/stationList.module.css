@@ -1,6 +1,6 @@
 .list__item_container{
-    background-color: #2F2F3A;
-    color: #A4AEC0;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
     cursor: pointer;
 }
 

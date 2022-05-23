@@ -17,7 +17,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: #2F2F3A;
+    color: var(--primary-color);
     font-size: 1.3rem;
 }
 

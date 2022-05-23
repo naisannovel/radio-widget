@@ -1,22 +1,30 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import style from './card.module.css';
-
-import { station } from '../../station';
 import StationList from './StationList';
 
 import SelectedStationItem from './SelectedStationItem';
+import { fetchAllStation } from '../utils/utils';
 
 const Card = () => {
 
+    const [allStation, setAllStation] = useState([]);
     const [selectedStation,setSelectedStation] = useState(null);
-
-    const stationItem = station.map(item => {
-        if(selectedStation?.id === item.id){
-            return <SelectedStationItem key={item.id} data={selectedStation} setSelectedStation={setSelectedStation} />
+    const [loading,setLoading] = useState(false);
+    
+    const stationItem = allStation.map(item => {
+        if(selectedStation?._id === item._id){
+            return <SelectedStationItem key={item._id} data={selectedStation} setSelectedStation={setSelectedStation} />
         }
-        
-        return <StationList data={item} key={item.id} setSelectedStation={setSelectedStation} />
+        return <StationList data={item} key={item._id} setSelectedStation={setSelectedStation} />
     })
+
+    useEffect(()=>{
+        setLoading(true);
+        fetchAllStation('radio/station',data => {
+            setLoading(false);
+            setAllStation(data);
+        });
+    },[])
 
     return (
         <section className={style.card__container}>
@@ -31,7 +39,7 @@ const Card = () => {
             </div>
 
             {/* station list */}
-            { stationItem }
+            { loading ? <h4>Loading...</h4> : stationItem }
 
             {/* active station UI */}
             {

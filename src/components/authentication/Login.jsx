@@ -1,28 +1,55 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Input from '../shared/Input';
 import SectionTitle from '../shared/SectionTitle';
 import style from './auth.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 // icons
-import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io5";
+import { IoLogoGoogle } from "react-icons/io5";
+import { isAuthenticated } from '../utils/isAuthenticate';
+import { userAuth } from '../utils/utils';
 
 const Login = () => {
+
+    const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
+    
+    const google = () =>{
+        window.open(`${process.env.REACT_APP_MAIN_API_URL}/auth/google`, "_self")
+    }
+
+    const redirectUser = () => {
+        if (isAuthenticated()) return <Navigate to="/" />
+    }
+
+    const onChangeHandler = e =>{
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    };
+
+    const submitHandler = e =>{
+        e.preventDefault();
+        userAuth('auth/login',formData, ()=> navigate('/', { replace: true }));
+        setFormData({})
+    }
+
     return (
         <Fragment>
+            { redirectUser() }
             <SectionTitle title="Log In" />
 
-            <form className={style.auth__form}>
-                <Input placeholder="Enter Your Email" />
+            <form className={style.auth__form} onSubmit={(e)=>submitHandler(e)}>
+                <Input name="email" changeHandler={onChangeHandler} placeholder="Enter Your Email" />
                 <br/>
-                <Input placeholder="Enter Your Password" />
+                <Input name="password" changeHandler={onChangeHandler} placeholder="Enter Your Password" />
                 <br/>
                 <button type='submit' className='primary__btn'>Log In</button>
             </form>
             <span className={style.auth__any__account}>Or</span>
-            <div className={style.auth__social__icon_container}>
-                <button><IoLogoGoogle/> Login With Google</button>
-                <button><IoLogoFacebook/> Login With Facebook</button>
+            <div className={style.auth__social__btn_container}>
+                <button onClick={google}><IoLogoGoogle/> Login With Google</button>
             </div>
             <span className={style.auth__any__account}>Do not have any account? <Link to="/signup">Sign Up</Link></span>
         </Fragment>

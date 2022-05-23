@@ -10,7 +10,7 @@
 }
 
 .card__title_container{
-    background-color: #EDAD61;
+    background-color: var(--secondary-color);
     padding: 1.4rem 0;
 }
 
@@ -42,8 +42,8 @@
 .active__station_container{
     display: grid;
     place-items: center;
-    background-color: #2F2F3A;
-    color: #A4AEC0;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
     padding: 1.4rem 0;
 }
 
@@ -52,6 +52,6 @@
 }
 
 .active__station_container p:first-child{
-    color: #EDAD61;
+    color: var(--secondary-color);
     font-size: 1rem;
 }
