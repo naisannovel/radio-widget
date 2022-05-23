@@ -50,6 +50,26 @@ export const fetchAllStation = (url, cb) => {
     });
 }
 
+// update station
+
+export const updateStation = (url, data, cb) => {
+  return axios.put(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data, {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((response) => {
+    if (response.status === 200) {
+          cb(response.data);
+    }
+  })
+  .catch((err) => {
+    alert(err.response.data.message);
+  });
+}
+
+
 // delete station
 
 export const deleteStation = (url, cb) => {

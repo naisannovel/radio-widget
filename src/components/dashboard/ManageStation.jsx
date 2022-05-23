@@ -1,22 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../shared/SectionTitle';
 import style from "./manageStation.module.css";
-import { IoCreateOutline, IoTrashSharp } from "react-icons/io5";
-import { fetchAllStation, deleteStation } from '../utils/utils';
+import { IoCreateOutline, IoTrashSharp, IoCheckmarkDoneSharp } from "react-icons/io5";
+import { fetchAllStation, deleteStation, updateStation } from '../utils/utils';
 
 const ManageStation = () => {
 
     const [allStation, setAllStation] = useState([]);
-    // const [selectedStation,setSelectedStation] = useState(null);
+    const [selectedStation,setSelectedStation] = useState(null);
     const [loading,setLoading] = useState(false);
 
-    useEffect(()=>{
-        setLoading(true);
-        fetchAllStation('radio/station',data => {
-            setLoading(false);
-            setAllStation(data);
+
+    const onChangeHandler = (e) => {
+        setSelectedStation({
+          ...selectedStation,
+          item:{
+              ...selectedStation.item,
+            [e.target.name]: e.target.value,
+          }
         });
-    },[])
+      };
+
+
+      const updateHandler = ()=>{
+
+        // check data changed or not
+        const stationItem = allStation[selectedStation?.index];
+
+        if(
+            stationItem?.name === selectedStation?.item.name && 
+            stationItem?.frequency === selectedStation?.item.frequency 
+        ){
+            setSelectedStation(null)
+        }else{
+            const updatedData = {
+                name: selectedStation?.item.name,
+                frequency: selectedStation?.item.frequency
+            }
+
+            // update new updated station data
+            setLoading(true);
+            updateStation(`radio/station/${selectedStation?.item._id}`,updatedData ,(updatedNewData) =>{
+                const newAry = [...allStation];
+                newAry.splice(selectedStation?.index, 1, updatedNewData);
+                setAllStation(newAry);
+                setLoading(false);
+                setSelectedStation(null)
+            })
+        }
+      }
 
     const deleteHandler = id =>{
         setLoading(true);
@@ -28,19 +60,29 @@ const ManageStation = () => {
         })
     }
 
+
+
+      useEffect(()=>{
+        setLoading(true);
+        fetchAllStation('radio/station',data => {
+            setLoading(false);
+            setAllStation(data);
+        });
+    },[])
+
+
     const stationListUI = allStation?.map((item, index) =>(
         <div className={style.row__container} key={item._id}>
             <p>{index + 1}</p>
-            <p> { item.name } </p>
-            <p> { item.frequency } </p>
+            <p> { selectedStation?.item._id !== item._id ? item.name : <input type="text" value={selectedStation?.item.name} name="name" onChange={e => onChangeHandler(e)} /> } </p>
+            <p> { selectedStation?.item._id !== item._id ? item.frequency : <input type="number" value={ selectedStation?.item.frequency } name="frequency" onChange={e => onChangeHandler(e)} /> } </p>
             <p className={style.manage__icon_container}>
-                <IoCreateOutline/>
+                { selectedStation?.item._id !== item._id ? <IoCreateOutline onClick={()=> setSelectedStation({ index, item })} /> : <IoCheckmarkDoneSharp onClick={updateHandler} /> }
                 <IoTrashSharp onClick={()=> deleteHandler(item._id)} />
             </p>
         </div>
     ))
-    // <p> <input type="text" /> </p>
-    // <p> <input type="number" /> </p>
+
     return (
         <section>
             <SectionTitle title="Manage Station" />

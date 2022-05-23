@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './card.module.css';
 import StationList from './StationList';
 
@@ -10,7 +10,7 @@ const Card = () => {
     const [allStation, setAllStation] = useState([]);
     const [selectedStation,setSelectedStation] = useState(null);
     const [loading,setLoading] = useState(false);
-    
+
     const stationItem = allStation.map(item => {
         if(selectedStation?._id === item._id){
             return <SelectedStationItem key={item._id} data={selectedStation} setSelectedStation={setSelectedStation} />
