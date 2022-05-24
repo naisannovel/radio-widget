@@ -2,7 +2,7 @@ import React from 'react';
 import style from './logo.module.css';
 import { useNavigate } from 'react-router-dom';
 
-const Logo = () => {
+const Logo:React.FC = () => {
 
     const navigate = useNavigate();
 

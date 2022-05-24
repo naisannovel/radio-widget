@@ -13,7 +13,7 @@ export const isAuthenticated = () => {
                 return true;
     
             } else {
-                Cookies.remove("token")
+                // Cookies.remove("token")
                 return false;
             }
         }else{

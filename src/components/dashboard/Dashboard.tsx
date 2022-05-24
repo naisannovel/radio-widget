@@ -1,11 +1,9 @@
 import React from 'react';
-import CreateNewStation from './CreateNewStation';
 import style from './dashboard.module.css';
 import Sidebar from './Sidebar';
-import ManageStation from './ManageStation';
 import { Outlet } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard:React.FC = () => {
     return (
         <section className={style.dashboard__main_container}>
             <div className={style.sidebar__container}> <Sidebar/> </div>

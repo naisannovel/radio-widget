@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import style from './sectionTitle.module.css';
 
-const SectionTitle = ({title}) => {
+interface SectionTitleProps{
+    title: string;
+}
+
+const SectionTitle:FC<SectionTitleProps> = ({title}) => {
     return (
         <div className={style.sectionTitle__container}>
             <h2>{title}</h2>
@@ -10,4 +14,4 @@ const SectionTitle = ({title}) => {
     );
 };
 
-export default SectionTitle;
+export default React.memo(SectionTitle);

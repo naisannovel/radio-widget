@@ -3,7 +3,7 @@ import style from './sidebar.module.css'
 import { IoCreateOutline, IoListSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar:React.FC = () => {
     return (
         <section className={style.sidebar__container}>
             <div className={style.sidebar__nav_container}>

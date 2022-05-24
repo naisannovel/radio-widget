@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import Dashboard from './components/dashboard/Dashboard';
@@ -9,9 +9,11 @@ import CreateNewStation from './components/dashboard/CreateNewStation';
 
 // is Authenticated
 import { isAuthenticated } from "./components/utils/isAuthenticate";
+
+// private route
 import PrivateRoute from './components/authentication/PrivateRoute';
 
-function App() {
+const App:FC = () =>{
 
   useEffect(()=>{
     isAuthenticated()

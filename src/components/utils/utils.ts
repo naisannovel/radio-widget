@@ -1,8 +1,15 @@
 import axios from "axios"
 
+// interface
+import { StationItem } from '../home/Card';
+import { AuthFormData } from '../authentication/Login';
+import { StationFormData } from '../dashboard/CreateNewStation';
+
 // login and signup
 
-export const userAuth = (url, data, cb) => {
+
+
+export const userAuth = (url:string, data: AuthFormData, cb:()=>void) => {
     return axios.post(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data, {
             withCredentials: true
         })
@@ -18,7 +25,7 @@ export const userAuth = (url, data, cb) => {
 
 // create station
 
-export const addStation = (url, data, cb) => {
+export const addStation = (url:string, data:StationFormData, cb:()=>void) => {
     return axios.post(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data, {
       withCredentials: true,
       headers: {
@@ -38,7 +45,7 @@ export const addStation = (url, data, cb) => {
 
 // fetch all station
 
-export const fetchAllStation = (url, cb) => {
+export const fetchAllStation = (url:string, cb: (value: StationItem[]) => void) => {
     return axios.get(`${process.env.REACT_APP_MAIN_API_URL}/${url}`)
     .then((response) => {
       if (response.status === 200) {
@@ -52,7 +59,7 @@ export const fetchAllStation = (url, cb) => {
 
 // update station
 
-export const updateStation = (url, data, cb) => {
+export const updateStation = (url:string, data:{ name:string; frequency:number|string }, cb:(value: StationItem)=> void) => {
   return axios.put(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data, {
     withCredentials: true,
     headers: {
@@ -72,7 +79,7 @@ export const updateStation = (url, data, cb) => {
 
 // delete station
 
-export const deleteStation = (url, cb) => {
+export const deleteStation = (url:string, cb:(value: StationItem)=> void) => {
   return axios.delete(`${process.env.REACT_APP_MAIN_API_URL}/${url}`,{ withCredentials: true })
   .then((response) => {
     if (response.status === 200) {

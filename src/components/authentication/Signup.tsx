@@ -3,57 +3,58 @@ import Input from '../shared/Input';
 import SectionTitle from '../shared/SectionTitle';
 import style from './auth.module.css';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-
-// icons
-import { IoLogoGoogle } from "react-icons/io5";
 import { isAuthenticated } from '../utils/isAuthenticate';
+
 import { userAuth } from '../utils/utils';
 
-const Login = () => {
+// helmet
+// import { Helmet } from 'react-helmet';
 
-    const [formData, setFormData] = useState({});
+// interface
+import { AuthFormData } from './Login';
+
+const Signup = () => {
+
+    const [formData, setFormData] = useState<AuthFormData | object>({});
     const navigate = useNavigate();
-    
-    const google = () =>{
-        window.open(`${process.env.REACT_APP_MAIN_API_URL}/auth/google`, "_self")
-    }
 
     const redirectUser = () => {
         if (isAuthenticated()) return <Navigate to="/" />
     }
 
-    const onChangeHandler = e =>{
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         })
     };
 
-    const submitHandler = e =>{
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        userAuth('auth/login',formData, ()=> navigate('/', { replace: true }));
+        userAuth('auth/signup',formData, ()=> navigate('/', { replace: true }));
         setFormData({})
     }
 
     return (
         <Fragment>
+            {/* <Helmet>
+                <title>Radio Widget - Sign Up</title>
+            </Helmet> */}
             { redirectUser() }
-            <SectionTitle title="Log In" />
+            <SectionTitle title="Sign Up" />
 
-            <form className={style.auth__form} onSubmit={(e)=>submitHandler(e)}>
+            <form className={style.auth__form} onSubmit={e => submitHandler(e)}>
+                <Input name="name" changeHandler={onChangeHandler} placeholder="Enter Your Name" />
+                <br/>
                 <Input name="email" changeHandler={onChangeHandler} placeholder="Enter Your Email" />
                 <br/>
                 <Input name="password" changeHandler={onChangeHandler} placeholder="Enter Your Password" />
                 <br/>
-                <button type='submit' className='primary__btn'>Log In</button>
+                <button type='submit' className='primary__btn'>Sign Up</button>
             </form>
-            <span className={style.auth__any__account}>Or</span>
-            <div className={style.auth__social__btn_container}>
-                <button onClick={google}><IoLogoGoogle/> Login With Google</button>
-            </div>
-            <span className={style.auth__any__account}>Do not have any account? <Link to="/signup">Sign Up</Link></span>
+            <span className={style.auth__any__account}>Have any account? <Link to="/login">Log In</Link></span>
         </Fragment>
     );
 };
 
-export default Login;
+export default Signup;

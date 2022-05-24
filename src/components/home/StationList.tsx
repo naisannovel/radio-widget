@@ -1,7 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { FC, Fragment } from 'react';
 import style from './stationList.module.css'
 
-const StationList = ({ data, setSelectedStation }) => {
+// interface
+import { StationItem } from './Card';
+
+export interface StationListProps{
+    data: StationItem;
+    setSelectedStation: (selectedStation: StationItem) => void;
+}
+
+const StationList:FC<StationListProps> = ({ data, setSelectedStation }) => {
     return (
         <Fragment>
             <div className={style.list__item_container} onClick={()=>setSelectedStation(data)}>
