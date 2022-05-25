@@ -8,11 +8,8 @@ import { fetchAllStation } from '../utils/utils';
 // helmet
 import { Helmet } from 'react-helmet';
 
-export interface StationItem{
-    _id: string;
-    name: string;
-    frequency: number;
-}
+// station item interface
+import { StationItem } from '../../types';
 
 const Card:FC = () => {
 

@@ -8,14 +8,10 @@ import { fetchAllStation, deleteStation, updateStation } from '../utils/utils';
 import { Helmet } from 'react-helmet';
 
 // interface
-import { StationItem } from '../home/Card';
+import { StationItem } from '../../types';
 
-interface SelectedStationForEdit{
-    index: number;
-    _id: string;
-    name: string;
-    frequency: number | string;
-}
+// selected station item interface - for edit
+import { SelectedStationForEdit } from '../../types';
 
 const ManageStation:FC = () => {
 

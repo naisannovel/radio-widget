@@ -2,7 +2,7 @@ import React, { FC, Fragment } from 'react';
 import style from './stationList.module.css'
 
 // interface
-import { StationItem } from './Card';
+import { StationItem } from '../../types';
 
 export interface StationListProps{
     data: StationItem;

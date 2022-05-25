@@ -3,7 +3,7 @@ import styleList from './stationList.module.css';
 import style from './selectedStationItem.module.css';
 
 // interface
-import { StationItem } from './Card';
+import { StationItem } from '../../types';
 
 export interface SelectedStationItemProps{
     data: StationItem;

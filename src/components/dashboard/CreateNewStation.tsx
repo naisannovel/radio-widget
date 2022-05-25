@@ -7,10 +7,8 @@ import style from "./createNewStation.module.css";
 // helmet
 import { Helmet } from 'react-helmet';
 
-export interface StationFormData{
-  name: string;
-  frequency: number | null;
-}
+// add station form data interface
+import { StationFormData } from '../../types';
 
 const CreateNewStation:FC = () => {
   const [formData, setFormData] = useState<StationFormData>({name:"",frequency:null});

@@ -12,11 +12,8 @@ import { userAuth } from '../utils/utils';
 // helmet
 import { Helmet } from 'react-helmet';
 
-export interface AuthFormData{
-    name?: string;
-    email?: string;
-    password?: string | number
-  }
+// auth form data
+import { AuthFormData } from '../../types';
   
 const Login = () => {
 

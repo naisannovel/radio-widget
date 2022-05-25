@@ -11,7 +11,7 @@ import { userAuth } from '../utils/utils';
 import { Helmet } from 'react-helmet';
 
 // interface
-import { AuthFormData } from './Login';
+import { AuthFormData } from '../../types';
 
 const Signup = () => {
 

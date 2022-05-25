@@ -1,9 +1,9 @@
 import axios from "axios"
 
 // interface
-import { StationItem } from '../home/Card';
-import { AuthFormData } from '../authentication/Login';
-import { StationFormData } from '../dashboard/CreateNewStation';
+import { StationItem } from '../../types';
+import { AuthFormData } from '../../types';
+import { StationFormData } from '../../types';
 
 // login and signup
 

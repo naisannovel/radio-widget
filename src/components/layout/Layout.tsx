@@ -2,9 +2,9 @@ import { Fragment, FC } from 'react';
 
 import Navbar from './Navbar';
 
-type Props = { children: React.ReactNode };
+import { ChildrenProps } from '../../types';
 
-const Layout:FC<Props> = ({children}) => {
+const Layout:FC<ChildrenProps> = ({children}) => {
   return (
     <Fragment>
       <Navbar />

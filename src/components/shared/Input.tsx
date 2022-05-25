@@ -1,12 +1,8 @@
 import React from 'react';
 import style from './input.module.css';
 
-interface InputProps{
-    name: string;
-    value?: string | number;
-    placeholder: string;
-    changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
+// input props interface
+import { InputProps } from '../../types';
 
 const Input:React.FC<InputProps> = ({ name, value, placeholder, changeHandler }) => {
     console.log(`rendered by ${name}`);
