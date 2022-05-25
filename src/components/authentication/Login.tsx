@@ -10,14 +10,14 @@ import { isAuthenticated } from '../utils/isAuthenticate';
 import { userAuth } from '../utils/utils';
 
 // helmet
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 export interface AuthFormData{
     name?: string;
     email?: string;
     password?: string | number
   }
-
+  
 const Login = () => {
 
     const [formData, setFormData] = useState<AuthFormData | object>({});
@@ -46,9 +46,9 @@ const Login = () => {
 
     return (
         <Fragment>
-            {/* <Helmet>
+            <Helmet>
                 <title>Radio Widget - Log In</title>
-            </Helmet> */}
+            </Helmet>
             { redirectUser() }
             <SectionTitle title="Log In" />
 

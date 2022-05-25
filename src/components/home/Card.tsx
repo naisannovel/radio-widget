@@ -6,7 +6,7 @@ import SelectedStationItem from './SelectedStationItem';
 import { fetchAllStation } from '../utils/utils';
 
 // helmet
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 export interface StationItem{
     _id: string;
@@ -37,9 +37,9 @@ const Card:FC = () => {
     
     return (
         <Fragment>
-            {/* <Helmet>
+            <Helmet>
                 <title>Radio widget - Home</title>
-            </Helmet> */}
+            </Helmet>
             <section className={style.card__container}>
 
                 {/* station title */}

@@ -5,7 +5,7 @@ import { IoCreateOutline, IoTrashSharp, IoCheckmarkDoneSharp } from "react-icons
 import { fetchAllStation, deleteStation, updateStation } from '../utils/utils';
 
 // helmet
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 // interface
 import { StationItem } from '../home/Card';
@@ -95,9 +95,9 @@ const ManageStation:FC = () => {
 
     return (
         <Fragment>
-            {/* <Helmet>
+            <Helmet>
                 <title>Radio Widget - Manage Station</title>
-            </Helmet> */}
+            </Helmet>
             <SectionTitle title="Manage Station" />
 
             {/* Station List */}

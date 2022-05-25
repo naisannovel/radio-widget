@@ -8,7 +8,7 @@ import { isAuthenticated } from '../utils/isAuthenticate';
 import { userAuth } from '../utils/utils';
 
 // helmet
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 // interface
 import { AuthFormData } from './Login';
@@ -37,9 +37,9 @@ const Signup = () => {
 
     return (
         <Fragment>
-            {/* <Helmet>
+            <Helmet>
                 <title>Radio Widget - Sign Up</title>
-            </Helmet> */}
+            </Helmet>
             { redirectUser() }
             <SectionTitle title="Sign Up" />
 

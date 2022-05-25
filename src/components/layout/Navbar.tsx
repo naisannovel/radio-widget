@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { isAuthenticated } from '../utils/isAuthenticate';
 
 // cookie
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 // css module
 import style from './navbar.module.css';
@@ -31,7 +31,7 @@ const Navbar:FC = () => {
                         {
                             isAuthenticated() ?
                             <button className='primary__btn' onClick={(e)=> {
-                                // Cookies.remove("token")
+                                Cookies.remove("token")
                                 navigate('/',{ replace: true })
                             } }>Log Out</button> :
                             <button className='primary__btn' onClick={()=>navigate("/login",{ replace: true })}>Log In</button>

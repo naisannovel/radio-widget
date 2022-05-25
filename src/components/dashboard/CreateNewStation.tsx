@@ -5,7 +5,7 @@ import { addStation } from "../utils/utils";
 import style from "./createNewStation.module.css";
 
 // helmet
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 export interface StationFormData{
   name: string;
@@ -33,9 +33,9 @@ const CreateNewStation:FC = () => {
 
   return (
     <Fragment>
-      {/* <Helmet>
+      <Helmet>
         <title>Radio widget - New Station</title>
-      </Helmet> */}
+      </Helmet>
 
       <SectionTitle title="Create New Station" />
 
