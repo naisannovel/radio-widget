@@ -40,9 +40,7 @@ export const addStation = (url:string, data:StationFormData, cb:()=>void) => {
       }
     })
     .catch((err) => {
-      // alert(err.response.data.message);
-      console.log(err);
-      
+      alert(err.response.data.message);
     });
 }
 
