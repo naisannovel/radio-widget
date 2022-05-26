@@ -88,7 +88,12 @@ export const updateStation = (url:string, data:{ name:string; frequency:number|s
 // delete station
 
 export const deleteStation = (url:string, cb:(value: StationItem)=> void) => {
-  return axios.delete(`${process.env.REACT_APP_MAIN_API_URL}/${url}`,{ withCredentials: true })
+  const token = Cookies.get('token');
+  return axios.delete(`${process.env.REACT_APP_MAIN_API_URL}/${url}`,{
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+  })
   .then((response) => {
     if (response.status === 200) {
           cb(response.data);
