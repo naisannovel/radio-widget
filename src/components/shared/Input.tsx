@@ -5,7 +5,6 @@ import style from './input.module.css';
 import { InputProps } from '../../types';
 
 const Input:React.FC<InputProps> = ({ name, value, placeholder, changeHandler }) => {
-    console.log(`rendered by ${name}`);
     return <input type="text" name={name} value={value} onChange={e => changeHandler(e)} placeholder={ placeholder } className={style.input__box} required />
 };
 
