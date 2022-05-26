@@ -16,6 +16,8 @@ import { AuthFormData } from '../../types';
 const Signup = () => {
 
     const [formData, setFormData] = useState<AuthFormData | object>({});
+    const [loading, setLoading] = useState<boolean>(false);
+
     const navigate = useNavigate();
 
     const redirectUser = () => {
@@ -30,9 +32,13 @@ const Signup = () => {
     };
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>) =>{
+        setLoading(true);
         e.preventDefault();
-        userAuth('auth/signup',formData, ()=> navigate('/', { replace: true }));
-        setFormData({})
+        userAuth('auth/signup',formData, ()=> {
+            setLoading(false);
+            navigate('/', { replace: true })
+        });
+        setFormData({});
     }
 
     return (
@@ -50,7 +56,7 @@ const Signup = () => {
                 <br/>
                 <Input name="password" changeHandler={onChangeHandler} placeholder="Enter Your Password" />
                 <br/>
-                <button type='submit' className='primary__btn'>Sign Up</button>
+                { loading ? <h4 style={{textAlign:"center"}}>Loading</h4> : <button type='submit' className='primary__btn'>Sign Up</button> }
             </form>
             <span className={style.auth__any__account}>Have any account? <Link to="/login">Log In</Link></span>
         </Fragment>

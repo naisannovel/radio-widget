@@ -24,8 +24,8 @@ const CreateNewStation:FC = () => {
     e.preventDefault();
 
     addStation('radio/station',formData, ()=> {
-        alert('Successfully Added');
-        setFormData({name:"",frequency:null});
+      alert('Successfully Added');
+      setFormData({name:"",frequency:null});
     })
   };
 

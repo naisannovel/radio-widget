@@ -18,6 +18,8 @@ import { AuthFormData } from '../../types';
 const Login = () => {
 
     const [formData, setFormData] = useState<AuthFormData | object>({});
+    const [loading, setLoading] = useState<boolean>(false);
+
     const navigate = useNavigate();
     
     const google = () =>{
@@ -36,8 +38,12 @@ const Login = () => {
     };
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>) =>{
+        setLoading(true);
         e.preventDefault();
-        userAuth('auth/login',formData, ()=> navigate('/', { replace: true }));
+        userAuth('auth/login',formData, ()=> {
+            setLoading(false);
+            navigate('/', { replace: true })
+        });
         setFormData({})
     }
 
@@ -54,7 +60,7 @@ const Login = () => {
                 <br/>
                 <Input name="password" changeHandler={onChangeHandler} placeholder="Enter Your Password" />
                 <br/>
-                <button type='submit' className='primary__btn'>Log In</button>
+                { loading ? <h4 style={{textAlign:"center"}}>Loading...</h4> : <button type='submit' className='primary__btn'>Log In</button> }
             </form>
             <span className={style.auth__any__account}>Or</span>
             <div className={style.auth__social__btn_container}>

@@ -12,6 +12,7 @@ import { isAuthenticated } from "./components/utils/isAuthenticate";
 
 // private route
 import PrivateRoute from './components/authentication/PrivateRoute';
+import SocialLogin from './components/authentication/SocialLogin';
 
 const App:FC = () =>{
 
@@ -22,6 +23,7 @@ const App:FC = () =>{
   return (
       <Routes>
         <Route path='/' element={<Card/>} />
+        <Route path='/google-oauth/:token' element={<SocialLogin />} />
         <Route path='/dashboard' element={ <PrivateRoute><Dashboard/></PrivateRoute> }>
             <Route path='create-station' element={ <PrivateRoute><CreateNewStation/></PrivateRoute> } />
             <Route path='manage-station' element={ <PrivateRoute><ManageStation/></PrivateRoute> } />
