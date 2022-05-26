@@ -37,6 +37,9 @@ const Signup = () => {
         userAuth('auth/signup',formData, ()=> {
             setLoading(false);
             navigate('/', { replace: true })
+        },(message)=>{
+            setLoading(false);
+            alert(message);
         });
         setFormData({});
     }

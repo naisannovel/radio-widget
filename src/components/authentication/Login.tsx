@@ -43,7 +43,10 @@ const Login = () => {
         userAuth('auth/login',formData, ()=> {
             setLoading(false);
             navigate('/', { replace: true })
-        });
+        },(message)=> {
+            setLoading(false);
+            alert(message);
+        } );
         setFormData({})
     }
 

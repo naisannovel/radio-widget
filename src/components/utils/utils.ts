@@ -11,16 +11,16 @@ import { StationFormData } from '../../types';
 
 // login and signup
 
-export const userAuth = (url:string, data: AuthFormData, cb:()=>void, ) => {
+export const userAuth = (url:string, data: AuthFormData, successCb:()=>void, errorCb:(message:string)=> void ) => {
     return axios.post(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data)
         .then(response => {
           if (response.status === 200) {
               Cookies.set("token", response.data?.token)
-              cb();
+              successCb();
             }
         })
         .catch(err => {
-            alert(err.response.data.message)
+          errorCb(err.response.data?.message)
         })
 }
 
