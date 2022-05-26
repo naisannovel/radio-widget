@@ -28,6 +28,7 @@ export const userAuth = (url:string, data: AuthFormData, successCb:()=>void, err
 
 export const addStation = (url:string, data:StationFormData, cb:()=>void) => {
   const token = Cookies.get('token');
+  
     return axios.post(`${process.env.REACT_APP_MAIN_API_URL}/${url}`, data, {
       headers: {
         "Authorization": `Bearer ${token}`
@@ -39,7 +40,9 @@ export const addStation = (url:string, data:StationFormData, cb:()=>void) => {
       }
     })
     .catch((err) => {
-      alert(err.response.data.message);
+      // alert(err.response.data.message);
+      console.log(err);
+      
     });
 }
 
