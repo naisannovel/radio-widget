@@ -16,6 +16,7 @@ export const userAuth = (url:string, data: AuthFormData, successCb:()=>void, err
         .then(response => {
           if (response.status === 200) {
               Cookies.set("token", response.data?.token)
+              
               successCb();
             }
         })
